@@ -241,7 +241,7 @@ export default function Page() {
               </div>
 
               <a
-                href="#"
+                href="/portofolio"
                 className="mt-6 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg text-white font-medium w-fit transition-colors"
               >
                 See More
