@@ -42,8 +42,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           Minerva Timeline
         </h2>
         <p className="text-gray-300 text-sm md:text-base max-w-sm">
-          I&apos;ve been working on Aceternity for the past 2 years. Here&apos;s
-          a timeline of my journey.
+          Here&apos;s a timeline of Minerva journey.
         </p>
       </div>
 
