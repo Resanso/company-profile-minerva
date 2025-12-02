@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { Phone, Mail, MapPin, Menu, X } from "lucide-react";
 import Lanyard from "@/components/Lanyard";
+import { TimelineSection } from "@/components/timeline-section";
 
 export default function Page() {
   // State untuk mobile menu jika diperlukan, namun untuk saat ini kita buat statis sesuai struktur html
@@ -250,6 +251,9 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* --- TIMELINE SECTION --- */}
+      <TimelineSection />
 
       {/* ================================================================
         ABOUT US SECTION (PRESERVED FROM ORIGINAL PAGE.TSX AS REQUESTED)
