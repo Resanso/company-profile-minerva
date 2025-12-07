@@ -1,8 +1,10 @@
-import React from "react";
 import Head from "next/head";
-import { Phone, Mail, MapPin, Menu, X } from "lucide-react";
+import { Menu} from "lucide-react";
 import Lanyard from "@/components/Lanyard";
 import { TimelineSection } from "@/components/timeline-section";
+import { ProductCard } from "@/components/ProductCard";
+import { products, morePotentialImpact } from "@/data/products";
+import { visionMission } from "@/data/about";
 
 export default function Page() {
   // State untuk mobile menu jika diperlukan, namun untuk saat ini kita buat statis sesuai struktur html
@@ -97,11 +99,11 @@ export default function Page() {
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0c1220] to-transparent pointer-events-none"></div>
 
         <div className="relative z-10 max-w-2xl px-6 pt-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Digital Twin</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Future of Industrial Manufacturing</h1>
           <p className="text-gray-300 mb-6 text-lg">
-            Real-Time Digital Twin AI Optimization for{" "}
+            Driven by Real-time Digital Twin, and Optimize Energy Usage by AI{" "}
             <br className="hidden md:block" />
-            Sustainable Manufacturing
+            Sustainable Smart Manufacturing
           </p>
           <a
             href="https://wa.me/6282217257007?text=Halo%20tim%20MINERVA,%0A%0ASaya%20ingin%20bertanya%20atau%20berdiskusi%20lebih%20lanjut%20terkait%20proyek%20MINERVA.%20Apakah%20bisa%20dijadwalkan%20meeting%20atau%20diberikan%20informasi%20lebih%20lanjut%3F%0A%0ATerima%20kasih."
@@ -109,78 +111,39 @@ export default function Page() {
             rel="noopener noreferrer"
             className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg text-white font-medium inline-block transition-colors"
           >
-            Contact Now
+            Contact Our Team Now
           </a>
         </div>
       </section>
 
-      {/* --- PRODUCT SECTION --- 
-          Source: index.html (Layout, Icons as Images, Titles)
-      */}
+      {/* --- PRODUCT SECTION --- */}
       <section id="product" className="relative py-24 bg-[#0c1220] text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold mb-12 text-center">Product</h2>
+          <h2 className="text-3xl font-semibold mb-12 text-center">
+            Our Products
+          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Card 1 */}
-            <div className="bg-[#10192e] p-6 rounded-xl shadow-lg hover:scale-105 transition transform duration-300">
-              <img
-                src="/images/icon1.png"
-                alt="Dashboard"
-                className="w-24 mb-4"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                icon={product.icon}
+                title={product.title}
+                oneLiner={product.oneLiner}
+                keyFeatures={product.keyFeatures}
+                useCases={product.useCases}
               />
-              <h3 className="font-semibold text-lg mb-2">
-                Interactive Digital Twin Dashboard
-              </h3>
-              <p className="text-gray-300 text-sm">
-                Lorem ipsum is simply dummy text of the printing industry.
-              </p>
-            </div>
+            ))}
+          </div>
 
-            {/* Card 2 */}
-            <div className="bg-[#10192e] p-6 rounded-xl shadow-lg hover:scale-105 transition transform duration-300">
-              <img
-                src="/images/icon2.png"
-                alt="Optimization"
-                className="w-24 mb-4"
-              />
-              <h3 className="font-semibold text-lg mb-2">
-                AI Energy Optimization & Simulation
-              </h3>
-              <p className="text-gray-300 text-sm">
-                Lorem ipsum is simply dummy text of the printing industry.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-[#10192e] p-6 rounded-xl shadow-lg hover:scale-105 transition transform duration-300">
-              <img
-                src="/images/icon3.png"
-                alt="Analysis"
-                className="w-24 mb-4"
-              />
-              <h3 className="font-semibold text-lg mb-2">
-                Predictive & Prescriptive Analysis
-              </h3>
-              <p className="text-gray-300 text-sm">
-                Lorem ipsum is simply dummy text of the printing industry.
-              </p>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-[#10192e] p-6 rounded-xl shadow-lg hover:scale-105 transition transform duration-300">
-              <img
-                src="/images/icon4.png"
-                alt="AI Agent"
-                className="w-24 mb-4"
-              />
-              <h3 className="font-semibold text-lg mb-2">
-                Ask AI Agent for Quick Insight
-              </h3>
-              <p className="text-gray-300 text-sm">
-                Lorem ipsum is simply dummy text of the printing industry.
-              </p>
-            </div>
+          {/* More Potential Impact Section */}
+          <div className="mt-16 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-6 text-center">
+              More Potential Impact
+            </h3>
+            <p className="text-gray-300 leading-relaxed text-center">
+              {morePotentialImpact.description}
+            </p>
           </div>
         </div>
       </section>
@@ -256,55 +219,38 @@ export default function Page() {
       <TimelineSection />
 
       {/* ================================================================
-        ABOUT US SECTION (PRESERVED FROM ORIGINAL PAGE.TSX AS REQUESTED)
+        ABOUT US SECTION
         ================================================================
       */}
       <section id="about" className="py-24 bg-[#0F141F] mt-24">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold mb-16 text-center">About Us</h2>
-          {/* Visi & Misi Grid */}
+          {/* Vision & Mission Grid */}
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 mb-20">
-            {/* Visi Column */}
+            {/* Vision Column */}
             <div>
               <h3 className="text-2xl font-bold text-blue-500 mb-6 uppercase tracking-wider">
-                Visi
+                {visionMission.vision.title}
               </h3>
-              <div className="text-gray-400 leading-relaxed space-y-4 text-sm md:text-base text-justify">
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
-                </p>
-                <p>
-                  Lorem Ipsum has been the industry&apos;s standard dummy text
-                  ever since the 1500s, when an unknown printer took a galley of
-                  type and scrambled it to make a type specimen book.
-                </p>
-                <p>
-                  It has survived not only five centuries, but also the leap
-                  into electronic typesetting, remaining essentially unchanged.
-                </p>
-                <p>It was popularised in the 1960s with the release of</p>
+              <div className="text-gray-400 leading-relaxed text-base md:text-lg">
+                <p>{visionMission.vision.content}</p>
               </div>
             </div>
 
-            {/* Misi Column */}
+            {/* Mission Column */}
             <div>
               <h3 className="text-2xl font-bold text-blue-500 mb-6 uppercase tracking-wider">
-                Misi
+                {visionMission.mission.title}
               </h3>
-              <div className="text-gray-400 leading-relaxed space-y-4 text-sm md:text-base text-justify">
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
-                </p>
-                <p>
-                  Lorem Ipsum has been the industry&apos;s standard dummy text
-                  ever since the 1500s, when an unknown printer took a galley of
-                  type and scrambled it to make a type specimen book, It has
-                  sürvived not only five centuries, but also the leap into
-                  electronic typesetting, remaining essentially unchanged.
-                </p>
-                <p>It was popularised in the 1960s with the release of</p>
+              <div className="text-gray-400 leading-relaxed space-y-4 text-sm md:text-base">
+                {visionMission.mission.items.map((item, index) => (
+                  <div key={index} className="flex items-start">
+                    <span className="text-blue-500 mr-3 mt-1 flex-shrink-0">
+                      •
+                    </span>
+                    <p>{item}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -366,12 +312,12 @@ export default function Page() {
             </p>
 
             <a
-              href="https://minerva-ericsson.vercel.app/"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="bg-blue-600 hover:bg-blue-700 text-white mt-10 px-4 py-2 rounded-md text-sm transition-colors">
-                Try Our Product
+                Request Demo
               </button>
             </a>
           </div>
