@@ -20,6 +20,10 @@ interface ContactSectionProps {
    */
   contactEmail?: string;
   /**
+   * The location to display.
+   */
+  location?: string;
+  /**
    * Array of social media links. Each object should have an 'id', 'name', 'iconSrc', and 'href'.
    */
   socialLinks?: Array<{ id: string; name: string; iconSrc: string; href: string }>;
@@ -42,10 +46,10 @@ const defaultSocialLinks = [
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   title = "We can turn your dream project into reality",
+  location = "Jl. Telekomunikasi No. 1, Terusan Buahbatu, Bojongsoang, Kabupaten Bandung, Jawa Barat 40257",
   mainMessage = "Let's talk! 👋",
-  contactEmail = "hello@pixelperfect.com",
+  contactEmail = "minerva@gmail.com",
   socialLinks = defaultSocialLinks,
-  backgroundImageSrc = "https://images.unsplash.com/photo-1742273330004-ef9c9d228530?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDY0fENEd3V3WEpBYkV3fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=900", // Example image from Unsplash
   onSubmit,
 }) => {
   const [formData, setFormData] = React.useState({
@@ -85,7 +89,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   ];
 
   return (
-    <section className="relative min-h-screen w-screen overflow-hidden bg-background">
+    <section className="relative min-h-screen w-screen overflow-hidden bg-[#0c1220]">
       {/* Background Image and Animated Bubbles */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
@@ -117,14 +121,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         {/* Main Section - Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl p-4 md:p-8 rounded-xl flex-grow">
           {/* Left Side: Title */}
-          <div className="flex flex-col justify-end p-4 lg:p-8">
+          <div className="flex flex-col justify-start p-4 lg:p-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight drop-shadow-lg max-w-lg">
               {title}
             </h1>
+    <div className="pt-24">
+      <div className="flex flex-row items-center gap-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-16 w-16 text-slate-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <h1 className="text-xl font-light text-slate-400">{location}</h1>
+      </div>
+    </div>
           </div>
 
           {/* Right Side: Contact Form */}
-          <div className="bg-background/90 p-6 md:p-8 rounded-lg shadow-xl border border-border">
+          <div className="bg-[#0c1220] p-6 md:p-8 rounded-lg shadow-xl border border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6">{mainMessage}</h2>
 
             {/* Email & Socials */}
@@ -138,16 +148,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             <hr className="my-6 border-border" />
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-[#0c1220]">
               <p className="text-muted-foreground">Leave us a brief message</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Your name</Label>
-                  <Input id="name" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} required />
+                  <Input id="name" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} required className="bg-[#0c1220]" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+                  <Input id="email" name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="bg-[#0c1220]" />
                 </div>
               </div>
 
@@ -157,7 +167,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   id="message"
                   name="message"
                   placeholder="Briefly describe your project idea..."
-                  className="min-h-[80px]"
+                  className="min-h-[80px] bg-[#0c1220]"
                   value={formData.message}
                   onChange={handleChange}
                   required

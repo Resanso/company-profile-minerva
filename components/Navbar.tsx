@@ -40,14 +40,14 @@ export function Navbar() {
         {/* Language + Hamburger */}
         <div className="flex items-center gap-4 relative">
           {/* Language Button (Static representation based on index.html) */}
-          <button id="langBtn" className="flex items-center gap-2">
+          {/* <button id="langBtn" className="flex items-center gap-2">
             <img
               id="langFlag"
               src="https://flagcdn.com/w20/id.png"
               alt="IND"
               className="w-6 h-4"
             />
-          </button>
+          </button> */}
 
           {/* Mobile Menu Button */}
           <button className="md:hidden text-white text-2xl">
