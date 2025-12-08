@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 interface ProductCardProps {
+  id: number;
   icon: string;
   title: string;
   oneLiner: string;
@@ -7,6 +10,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({
+  id,
   icon,
   title,
   oneLiner,
@@ -14,7 +18,10 @@ export function ProductCard({
   useCases,
 }: ProductCardProps) {
   return (
-    <div className="bg-[#10192e] p-6 rounded-xl shadow-lg hover:scale-105 transition transform duration-300">
+    <Link
+      href={`/product/${id}`}
+      className="bg-[#10192e] p-6 rounded-xl shadow-lg hover:scale-105 transition transform duration-300 block text-left"
+    >
       <img src={icon} alt={title} className="w-24 mb-4" />
       <h3 className="font-semibold text-lg mb-2">{title}</h3>
       <p className="text-blue-400 text-sm mb-4 italic">{oneLiner}</p>
@@ -46,6 +53,6 @@ export function ProductCard({
           ))}
         </ul>
       </div>
-    </div>
+    </Link>
   );
 }

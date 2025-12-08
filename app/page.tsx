@@ -1,10 +1,12 @@
 import Head from "next/head";
-import { Menu} from "lucide-react";
 import Lanyard from "@/components/Lanyard";
 import { TimelineSection } from "@/components/timeline-section";
 import { ProductCard } from "@/components/ProductCard";
 import { products, morePotentialImpact } from "@/data/products";
 import { visionMission } from "@/data/about";
+import { ContactSection } from "@/components/ui/contact";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export default function Page() {
   // State untuk mobile menu jika diperlukan, namun untuk saat ini kita buat statis sesuai struktur html
@@ -21,60 +23,10 @@ export default function Page() {
       {/* --- NAVBAR --- 
           Source: index.html (structure)
       */}
-      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur bg-[#0c1220]/90 border-b border-white/10 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <img src="/minerva-logo.png" alt="Minerva Logo" className="w-20" />
-          </div>
-
-          {/* Nav Links - Desktop */}
-          <div className="hidden md:flex gap-8 text-sm font-medium">
-            <a
-              href="#home"
-              className="nav-link hover:text-blue-400 transition-colors"
-            >
-              Home
-            </a>
-            <a
-              href="#product"
-              className="nav-link hover:text-blue-400 transition-colors"
-            >
-              Product
-            </a>
-            <a
-              href="#portfolio"
-              className="nav-link hover:text-blue-400 transition-colors"
-            >
-              Portfolio
-            </a>
-            <a
-              href="#about"
-              className="nav-link hover:text-blue-400 transition-colors"
-            >
-              About Us
-            </a>
-          </div>
-
-          {/* Language + Hamburger */}
-          <div className="flex items-center gap-4 relative">
-            {/* Language Button (Static representation based on index.html) */}
-            <button id="langBtn" className="flex items-center gap-2">
-              <img
-                id="langFlag"
-                src="https://flagcdn.com/w20/id.png"
-                alt="IND"
-                className="w-6 h-4"
-              />
-            </button>
-
-            {/* Mobile Menu Button */}
-            <button className="md:hidden text-white text-2xl">
-              <Menu className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-      </nav>
+      {/* --- NAVBAR --- 
+          Source: index.html (structure)
+      */}
+      <Navbar />
 
       {/* --- HERO SECTION --- 
           Source: index.html (Video background, Text, Contact Button)
@@ -127,6 +79,7 @@ export default function Page() {
             {products.map((product) => (
               <ProductCard
                 key={product.id}
+                id={product.id}
                 icon={product.icon}
                 title={product.title}
                 oneLiner={product.oneLiner}
@@ -291,99 +244,18 @@ export default function Page() {
         </div>
       </section>
 
+      {/* --- CONTACT SECTION --- */}
+      <div className="dark">
+        <ContactSection />
+      </div>
+
       {/* --- FOOTER --- 
           Source: index.html (Layout, "Try Our Product" section, Contact info)
       */}
-      <footer
-        id="contact"
-        className="bg-[#151b29] pt-10 pb-5 text-white border-t border-gray-800"
-      >
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Logo + Deskripsi + Try Product */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src="/minerva-logo.png" alt="Minerva" className="w-40" />
-            </div>
-
-            <p className="text-gray-300 text-sm leading-relaxed mb-5 mt-10">
-              Real-Time Digital Twin AI Optimization for
-              <br />
-              Sustainable Manufacturing
-            </p>
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="bg-blue-600 hover:bg-blue-700 text-white mt-10 px-4 py-2 rounded-md text-sm transition-colors">
-                Request Demo
-              </button>
-            </a>
-          </div>
-
-          {/* Garis Vertikal (Hidden on Mobile) */}
-          <div className="hidden md:flex justify-center">
-            <div className="border-l border-gray-600 h-full opacity-70"></div>
-          </div>
-
-          {/* Menu + Contact */}
-          <div className="grid grid-cols-2 gap-4">
-            {/* Menu */}
-            <div>
-              <h4 className="font-semibold mb-4">Event Links</h4>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li>
-                  <a href="#home" className="hover:text-blue-400 transition">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#product" className="hover:text-blue-400 transition">
-                    Product
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#portfolio"
-                    className="hover:text-blue-400 transition"
-                  >
-                    Portfolio
-                  </a>
-                </li>
-                <li>
-                  <a href="#about" className="hover:text-blue-400 transition">
-                    About Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-4 text-gray-300 text-sm">
-                <li className="flex items-center gap-2">
-                  +62 822-1725-7007 (dhafin)
-                </li>
-                <li className="flex items-center gap-2">minerva@gmail.com</li>
-                <li className="flex items-start gap-2">
-                  <span>
-                    Bandung, Jawa Barat,
-                    <br />
-                    Indonesia
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="text-center text-gray-400 text-xs mt-10 border-t border-gray-700 pt-4">
-          © Develop by MINERVA Team. 2025
-        </div>
-      </footer>
+      {/* --- FOOTER --- 
+          Source: index.html (Layout, "Try Our Product" section, Contact info)
+      */}
+      <Footer />
     </div>
   );
 }
