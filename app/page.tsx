@@ -71,7 +71,7 @@ export default function Page() {
       {/* --- PRODUCT SECTION --- */}
       <section id="product" className="relative py-24 bg-[#0c1220] text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold mb-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-12 text-center">
             Our Products
           </h2>
 
@@ -123,11 +123,10 @@ export default function Page() {
       */}
       <section
         id="portfolio"
-        className="relative"
-        style={{ marginTop: "-200px" }}
+        className="relative mt-[-100px] md:mt-[-200px]"
       >
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-semibold mb-12 relative z-10">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-12 relative z-10">
             Portfolio
           </h2>
 
@@ -177,7 +176,7 @@ export default function Page() {
       */}
       <section id="about" className="py-24 bg-[#0F141F] mt-24">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-16 text-center">About Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">About Us</h2>
           {/* Vision & Mission Grid */}
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 mb-20">
             {/* Vision Column */}
@@ -212,33 +211,33 @@ export default function Page() {
 
       <section className=" bg-[#0B0F17] w-full h-full">
         {/* Team Lanyards - render 4 lanyards for each team member */}
-        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className=" grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-6 mb-16">
           <div>
             <Lanyard
               image="/band.png"
               model="/3d-model/adrian.glb"
-              heightClass="h-[85vh] md:h-[90vh]"
+              heightClass="h-[50vh] md:h-[90vh]"
             />
           </div>
           <div>
             <Lanyard
               image="/band.png"
               model="/3d-model/dhafin.glb"
-              heightClass="h-[85vh] md:h-[90vh]"
+              heightClass="h-[50vh] md:h-[90vh]"
             />
           </div>
           <div>
             <Lanyard
               image="/band.png"
               model="/3d-model/resan.glb"
-              heightClass="h-[85vh] md:h-[90vh]"
+              heightClass="h-[50vh] md:h-[90vh]"
             />
           </div>
           <div>
             <Lanyard
               image="/band.png"
               model="/3d-model/rafi.glb"
-              heightClass="h-[85vh] md:h-[90vh]"
+              heightClass="h-[50vh] md:h-[90vh]"
             />
           </div>
         </div>
