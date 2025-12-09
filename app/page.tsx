@@ -139,7 +139,7 @@ export default function Page() {
             </div>
 
             {/* Impact Metrics Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
               {impactMetrics.map((metric, index) => {
                 const IconComponent = iconMap[metric.icon];
                 const isReduce = metric.type === 'reduce';
@@ -148,10 +148,13 @@ export default function Page() {
                 const bgColor = isReduce ? 'bg-green-500/10' : 'bg-blue-500/10';
                 const hoverBgColor = isReduce ? 'group-hover:bg-green-500/20' : 'group-hover:bg-blue-500/20';
 
+                // If it's the last item and there's an odd number, make it span 2 columns on mobile
+                const isLastOdd = index === impactMetrics.length - 1 && impactMetrics.length % 2 !== 0;
+
                 return (
                   <div
                     key={index}
-                    className="bg-[#10192e]/50 backdrop-blur-sm rounded-xl p-6 border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group"
+                    className={`bg-[#10192e]/50 backdrop-blur-sm rounded-xl p-6 border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group ${isLastOdd ? 'col-span-2 md:col-span-1' : ''}`}
                   >
                     <div className={`w-12 h-12 rounded-lg ${bgColor} flex items-center justify-center mb-4 ${hoverBgColor} transition-colors`}>
                       <IconComponent className={`w-6 h-6 ${trendColor}`} />
