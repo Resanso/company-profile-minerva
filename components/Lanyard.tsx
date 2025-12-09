@@ -20,9 +20,9 @@ import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import * as THREE from "three";
 import image from "next/image";
 
-// replace with your own imports, see the usage snippet for details
+// Use adrian.glb as default card template since card.glb doesn't exist
 // @ts-ignore: allow importing .glb assets without type declarations
-const cardGLB = "/3d-model/card.glb";
+const cardGLB = "/3d-model/adrian.glb";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 

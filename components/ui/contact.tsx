@@ -48,7 +48,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   title = "We can turn your dream project into reality",
   location = "Jl. Telekomunikasi No. 1, Terusan Buahbatu, Bojongsoang, Kabupaten Bandung, Jawa Barat 40257",
   mainMessage = "Let's talk! 👋",
-  contactEmail = "minerva@gmail.com",
+  contactEmail = "minervaenergyid@gmail.com",
   socialLinks = defaultSocialLinks,
   onSubmit,
 }) => {

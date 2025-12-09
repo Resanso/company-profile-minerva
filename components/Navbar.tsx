@@ -10,7 +10,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src="/minerva-logo.png" alt="Minerva Logo" className="w-20" />
+          <img src="/logo/MINERVA logo.png" alt="Minerva Logo" className="w-22" />
         </div>
 
         {/* Nav Links - Desktop */}

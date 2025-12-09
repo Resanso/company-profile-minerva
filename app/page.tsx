@@ -1,12 +1,22 @@
 import Head from "next/head";
-import Lanyard from "@/components/Lanyard";
 import { TimelineSection } from "@/components/timeline-section";
 import { ProductCard } from "@/components/ProductCard";
-import { products, morePotentialImpact } from "@/data/products";
+import { products, morePotentialImpact, impactMetrics } from "@/data/products";
 import { visionMission } from "@/data/about";
-import { ContactSection } from "@/components/ui/contact";
+import { ProfessionalContactSection } from "@/components/ui/contact-professional";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { TeamSection } from "@/components/TeamSection";
+import { DollarSign, AlertTriangle, Leaf, Target, Zap, TrendingDown, TrendingUp } from "lucide-react";
+
+// Icon mapping
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  DollarSign,
+  AlertTriangle,
+  Leaf,
+  Target,
+  Zap,
+};
 
 export default function Page() {
   // State untuk mobile menu jika diperlukan, namun untuk saat ini kita buat statis sesuai struktur html
@@ -75,7 +85,8 @@ export default function Page() {
             Our Products
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Desktop: Grid Layout */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {products.map((product) => (
               <ProductCard
                 key={product.id}
@@ -89,14 +100,87 @@ export default function Page() {
             ))}
           </div>
 
+          {/* Mobile: Horizontal Scroll */}
+          <div className="md:hidden">
+            <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6">
+              {products.map((product) => (
+                <div key={product.id} className="flex-shrink-0 w-[85vw] snap-center">
+                  <ProductCard
+                    id={product.id}
+                    icon={product.icon}
+                    title={product.title}
+                    oneLiner={product.oneLiner}
+                    keyFeatures={product.keyFeatures}
+                    useCases={product.useCases}
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Scroll indicator dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {products.map((_, index) => (
+                <div
+                  key={index}
+                  className="w-2 h-2 rounded-full bg-gray-600"
+                />
+              ))}
+            </div>
+          </div>
+
           {/* More Potential Impact Section */}
-          <div className="mt-16 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-6 text-center">
-              More Potential Impact
-            </h3>
-            <p className="text-gray-300 leading-relaxed text-center">
-              {morePotentialImpact.description}
-            </p>
+          <div className="mt-24">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+                {morePotentialImpact.title}
+              </h3>
+              <p className="text-gray-400 text-sm md:text-base max-w-3xl mx-auto">
+                {morePotentialImpact.subtitle}
+              </p>
+            </div>
+
+            {/* Impact Metrics Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+              {impactMetrics.map((metric, index) => {
+                const IconComponent = iconMap[metric.icon];
+                const isReduce = metric.type === 'reduce';
+                const TrendIcon = isReduce ? TrendingDown : TrendingUp;
+                const trendColor = isReduce ? 'text-green-400' : 'text-blue-400';
+                const bgColor = isReduce ? 'bg-green-500/10' : 'bg-blue-500/10';
+                const hoverBgColor = isReduce ? 'group-hover:bg-green-500/20' : 'group-hover:bg-blue-500/20';
+
+                return (
+                  <div
+                    key={index}
+                    className="bg-[#10192e]/50 backdrop-blur-sm rounded-xl p-6 border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group"
+                  >
+                    <div className={`w-12 h-12 rounded-lg ${bgColor} flex items-center justify-center mb-4 ${hoverBgColor} transition-colors`}>
+                      <IconComponent className={`w-6 h-6 ${trendColor}`} />
+                    </div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <TrendIcon className={`w-5 h-5 ${trendColor}`} />
+                      <span className="text-3xl md:text-4xl font-bold text-white">
+                        {metric.value}
+                      </span>
+                    </div>
+                    <p className="text-gray-400 text-sm font-medium mb-1">
+                      {metric.description}
+                    </p>
+                    <p className={`text-xs ${isReduce ? 'text-green-400/70' : 'text-blue-400/70'}`}>
+                      {isReduce ? 'Reduce' : 'Improve'}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Description */}
+            <div className="mt-12 max-w-4xl mx-auto">
+              <p className="text-gray-400 leading-relaxed text-center text-sm md:text-base">
+                Transform manufacturing operations from reactive to proactive with AI-powered optimization.
+                Gain operational visibility, reduce energy waste, and accelerate decision-making through
+                intelligent automation—creating a more resilient and sustainable manufacturing environment.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -142,7 +226,7 @@ export default function Page() {
                 <h3 className="text-xl font-semibold mb-4">
                   1st Winner Hackathon
                 </h3>
-                <p className="text-gray-300 text-sm leading-relaxed text-[16px]">
+                <p className="text-gray-300 text-sm leading-relaxed text-[16px] line-clamp-4 md:line-clamp-none">
                   MINERVA won 1st place in the 2025 Hackathon organized by
                   Ericsson, Qualcomm, Komdigi, and the Ministry of Industry with
                   a focus on 5G and AI technology. The Future of Tech team won
@@ -209,44 +293,8 @@ export default function Page() {
         </div>
       </section>
 
-      <section className=" bg-[#0B0F17] w-full h-full">
-        {/* Team Lanyards - render 4 lanyards for each team member */}
-        <div className=" grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-6 mb-16">
-          <div>
-            <Lanyard
-              image="/band.png"
-              model="/3d-model/adrian.glb"
-              heightClass="h-[50vh] md:h-[90vh]"
-            />
-          </div>
-          <div>
-            <Lanyard
-              image="/band.png"
-              model="/3d-model/dhafin.glb"
-              heightClass="h-[50vh] md:h-[90vh]"
-            />
-          </div>
-          <div>
-            <Lanyard
-              image="/band.png"
-              model="/3d-model/resan.glb"
-              heightClass="h-[50vh] md:h-[90vh]"
-            />
-          </div>
-          <div>
-            <Lanyard
-              image="/band.png"
-              model="/3d-model/rafi.glb"
-              heightClass="h-[50vh] md:h-[90vh]"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* --- CONTACT SECTION --- */}
-      <div className="dark">
-        <ContactSection />
-      </div>
+      {/* --- TEAM SECTION --- */}
+      <TeamSection />
 
       {/* --- FOOTER --- 
           Source: index.html (Layout, "Try Our Product" section, Contact info)

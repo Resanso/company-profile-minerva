@@ -86,7 +86,61 @@ export const products: Product[] = [
   },
 ];
 
+export interface ImpactMetric {
+  icon: string;
+  title: string;
+  value: string;
+  description: string;
+  iconType: 'lucide';
+  type: 'reduce' | 'improve';
+}
+
+export const impactMetrics: ImpactMetric[] = [
+  {
+    icon: "DollarSign",
+    title: "Operational Cost",
+    value: "18%",
+    description: "Operational Cost",
+    iconType: 'lucide',
+    type: 'reduce',
+  },
+  {
+    icon: "AlertTriangle",
+    title: "Unplanned Downtime",
+    value: "25%",
+    description: "Unplanned Downtime",
+    iconType: 'lucide',
+    type: 'reduce',
+  },
+  {
+    icon: "Leaf",
+    title: "Carbon Emission",
+    value: "14%",
+    description: "Carbon Emission",
+    iconType: 'lucide',
+    type: 'reduce',
+  },
+  {
+    icon: "Target",
+    title: "Decision Making",
+    value: "5x",
+    description: "Decision Making",
+    iconType: 'lucide',
+    type: 'improve',
+  },
+  {
+    icon: "Zap",
+    title: "Energy Consumption",
+    value: "11%",
+    description: "Energy Consumption",
+    iconType: 'lucide',
+    type: 'reduce',
+  },
+];
+
 export const morePotentialImpact = {
+  title: "With More Potential Impact Coming From MINERVA Validated By Operational",
+  subtitle: "This is how MINERVA impacted Indonesia heavy industry manufacturing area",
   description:
     "By integrating MINERVA's industrial AI platform, manufacturers can transform how they operate—moving from reactive problem-solving to proactive optimization. Companies gain deeper operational visibility, enabling smarter process tuning and more consistent quality outcomes. Energy inefficiencies diminish as autonomous agents continuously refine resource allocation. Decision-making accelerates through AI-assisted insights, while engineers are empowered with tools that amplify their expertise rather than replace it. The result is a more resilient, sustainable, and intelligent manufacturing environment—one where disruptions are anticipated, waste is minimized, and every operational decision is informed by comprehensive data intelligence.",
 };

@@ -4,21 +4,28 @@ export interface TimelineEntry {
   description: string;
   items: string[];
   image?: string;
+  images?: {
+    main: string;
+    grid?: string[];
+  };
   highlighted?: boolean;
 }
 
 export const timelineData: TimelineEntry[] = [
   {
     year: "2025",
-    title: "Pilot Project",
+    title: "Hackathon Victory & Pilot Implementation",
     description:
-      "MINERVA wins 1st place in Hackathon 2025 and begins pilot implementation with industrial partners.",
+      "MINERVA wins 1st place in Hackathon 2025 and successfully deploys pilot project with industrial partners.",
     items: [
-      "Won 1st place in Ericsson x Qualcomm Hackathon 2025",
-      "Part of pilot deployment engineers in national manufacturing facility",
-      "Validated energy optimization and quality improvement capabilities",
+      "Won 1st place in Ericsson x Qualcomm x Ministry of Industry Hackathon 2025",
+      "Deployed pilot implementation in national manufacturing facility",
+      "Real-time digital twin successfully monitoring production processes",
     ],
-    image: "/hackathon-winner.JPG",
+    images: {
+      main: "/hackathon-winner.JPG",
+      grid: ["/pilot/Pilot.jpeg", "/pilot/Pilot2.jpeg"],
+    },
     highlighted: true,
   },
   {
@@ -27,7 +34,7 @@ export const timelineData: TimelineEntry[] = [
     description:
       "Establishing strategic partnerships and preparing commercial platform for market deployment.",
     items: [
-      "Establish partnerships with Ericsson, Telkomsel 5G, and cloud providers",
+      "Establish partnerships with network and cloud providers",
       "Data and feature refinement for commercial MINERVA V2.0",
       "Build enterprise-grade security and compliance infrastructure",
       "Develop API integrations for major industrial systems",
