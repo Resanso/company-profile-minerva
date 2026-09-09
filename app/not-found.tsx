@@ -1,35 +1,24 @@
-import Link from 'next/link';
-import { Home, Search } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Action } from "@/components/ui/action";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#0c1220] flex items-center justify-center px-6">
-      <div className="max-w-md w-full text-center">
-        <div className="mb-8">
-          <h1 className="text-9xl font-bold text-blue-600 mb-4">404</h1>
-          <h2 className="text-3xl font-bold text-white mb-3">
-            Page Not Found
-          </h2>
-          <p className="text-gray-400 mb-8">
-            Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.
-          </p>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
-              <Home className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
-          </Link>
-
-          <Link href="/#product">
-            <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 w-full sm:w-auto">
-              <Search className="w-4 h-4 mr-2" />
-              Browse Products
-            </Button>
-          </Link>
+    <div className="flex min-h-screen items-center bg-surface">
+      <div className="mx-auto w-full max-w-7xl px-6 py-24 lg:px-10">
+        <p className="type-eyebrow text-accent">Error 404</p>
+        <h1 className="type-display rule-accent mt-6 max-w-3xl">
+          This page could not be found
+        </h1>
+        <p className="type-lead mt-10 max-w-xl text-ink-muted">
+          The page may have been moved or removed. You can return to the
+          homepage or go straight to the platform overview.
+        </p>
+        <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+          <Action href="/" variant="solid">
+            Back to home
+          </Action>
+          <Action href="/#product" variant="outline">
+            View the platform
+          </Action>
         </div>
       </div>
     </div>

@@ -1,91 +1,114 @@
 "use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Action } from "@/components/ui/action";
+
+const NAV_LINKS = [
+  { href: "/#technology", label: "Technology" },
+  { href: "/#product", label: "Platform" },
+  { href: "/#portfolio", label: "Proof" },
+  { href: "/#about", label: "About us" },
+];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Lock body scroll while the mobile sheet is open.
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur bg-[#0c1220]/90 border-b border-white/10 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img src="/logo/MINERVA logo.png" alt="Minerva Logo" className="w-22" />
-        </div>
-
-        {/* Nav Links - Desktop */}
-        <div className="hidden md:flex gap-8 text-sm font-medium">
+    <header className="sticky top-0 z-50">
+      {/* Utility strip */}
+      <div className="hidden bg-deep text-on-deep md:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-end gap-8 px-6 py-2.5 text-[0.8125rem] lg:px-10">
+          <span className="text-on-deep-muted">
+            Winner — Ericsson &amp; Qualcomm Hackathon 2025
+          </span>
           <a
-            href="/#home"
-            className="nav-link hover:text-blue-400 transition-colors"
+            href="mailto:minervaenergyid@gmail.com"
+            className="text-on-deep transition-colors hover:text-accent-on-deep"
           >
-            Home
-          </a>
-          <a
-            href="/#product"
-            className="nav-link hover:text-blue-400 transition-colors"
-          >
-            Product
-          </a>
-          <a
-            href="/#portfolio"
-            className="nav-link hover:text-blue-400 transition-colors"
-          >
-            Portfolio
-          </a>
-          <a
-            href="/#about"
-            className="nav-link hover:text-blue-400 transition-colors"
-          >
-            About Us
+            Contact us
           </a>
         </div>
+      </div>
 
-        {/* Language + Hamburger */}
-        <div className="flex items-center gap-4 relative z-[60]">
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-white text-2xl"
+      {/* Masthead */}
+      <div className="border-b border-line bg-surface">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+          <Link href="/" className="flex items-center" aria-label="MINERVA — home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo/MINERVA logo.png"
+              alt="MINERVA"
+              className="h-9 w-auto"
+            />
+          </Link>
+
+          <nav className="hidden items-center gap-9 lg:flex">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-[0.9375rem] text-ink transition-colors hover:text-accent"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden lg:block">
+            <Action href="/#contact" variant="solid" size="sm">
+              Request a briefing
+            </Action>
+          </div>
+
+          <button
+            type="button"
+            className="text-ink-strong lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile sheet */}
       {isOpen && (
-        <div className="fixed inset-0 w-screen h-screen bg-[#0c1220] z-[55] flex flex-col items-center justify-center space-y-8 md:hidden text-white overflow-hidden">
-           <a
-            href="/#home"
-            className="text-2xl font-medium hover:text-blue-400 transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </a>
-          <a
-            href="/#product"
-            className="text-2xl font-medium hover:text-blue-400 transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Product
-          </a>
-          <a
-            href="/#portfolio"
-            className="text-2xl font-medium hover:text-blue-400 transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Portfolio
-          </a>
-          <a
-            href="/#about"
-            className="text-2xl font-medium hover:text-blue-400 transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            About Us
-          </a>
+        <div className="fixed inset-0 top-[65px] z-40 bg-surface lg:hidden">
+          <nav className="flex flex-col border-t border-line">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="border-b border-line px-6 py-5 text-xl font-light text-ink-strong"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <div className="px-6 py-8">
+            <Action
+              href="/#contact"
+              variant="accent"
+              className="w-full"
+              onClick={() => setIsOpen(false)}
+            >
+              Request a briefing
+            </Action>
+          </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

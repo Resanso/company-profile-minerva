@@ -1,9 +1,12 @@
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-[#0c1220] flex items-center justify-center">
-      <div className="text-center">
-        <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500 mb-4"></div>
-        <p className="text-gray-400 text-lg">Loading...</p>
+    <div className="flex min-h-screen items-center justify-center bg-surface">
+      <div className="flex items-center gap-4">
+        <span
+          aria-hidden
+          className="h-6 w-6 animate-spin border-2 border-line border-t-accent"
+        />
+        <p className="type-eyebrow text-ink-subtle">Loading</p>
       </div>
     </div>
   );

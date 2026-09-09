@@ -44,24 +44,24 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen bg-[#0c1220] flex items-center justify-center px-6">
+        <div className="flex min-h-screen items-center justify-center bg-surface px-6">
           <div className="max-w-md w-full text-center">
-            <div className="bg-[#151b29] border border-red-900/20 rounded-2xl p-8">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-red-600/10 flex items-center justify-center">
-                <AlertCircle className="w-8 h-8 text-red-500" />
+            <div className="border border-line bg-surface p-10">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center border border-destructive/30 bg-destructive/5">
+                <AlertCircle className="h-6 w-6 text-destructive" />
               </div>
 
-              <h1 className="text-2xl font-bold text-white mb-3">
+              <h1 className="type-title mb-4 font-light">
                 Something went wrong
               </h1>
 
-              <p className="text-gray-400 mb-6">
+              <p className="mb-6 leading-relaxed text-ink-muted">
                 We apologize for the inconvenience. An unexpected error has occurred.
               </p>
 
               {process.env.NODE_ENV === 'development' && this.state.error && (
-                <div className="mb-6 p-4 bg-red-950/20 border border-red-900/30 rounded-lg text-left">
-                  <p className="text-xs text-red-400 font-mono break-all">
+                <div className="mb-6 border-l-2 border-destructive bg-surface-alt p-4 text-left">
+                  <p className="break-all font-mono text-xs text-ink">
                     {this.state.error.toString()}
                   </p>
                 </div>
@@ -70,7 +70,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button
                   onClick={this.handleReset}
-                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  className="rounded-none bg-accent text-white hover:bg-accent-hover"
                 >
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Try Again
@@ -79,7 +79,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 <Button
                   onClick={() => window.location.href = '/'}
                   variant="outline"
-                  className="border-gray-700 text-gray-300 hover:bg-gray-800"
+                  className="rounded-none border-ink-strong text-ink-strong hover:bg-ink-strong hover:text-white"
                 >
                   Go to Homepage
                 </Button>

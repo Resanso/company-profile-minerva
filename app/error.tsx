@@ -1,8 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { AlertCircle, RefreshCw, Home } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useEffect } from "react";
+import { ActionButton, Action } from "@/components/ui/action";
 
 export default function Error({
   error,
@@ -12,57 +11,35 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log error to monitoring service
-    console.error('Application error:', error);
+    console.error("Application error:", error);
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[#0c1220] flex items-center justify-center px-6">
-      <div className="max-w-md w-full text-center">
-        <div className="bg-[#151b29] border border-red-900/20 rounded-2xl p-8">
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-red-600/10 flex items-center justify-center">
-            <AlertCircle className="w-8 h-8 text-red-500" />
-          </div>
+    <div className="flex min-h-screen items-center bg-surface">
+      <div className="mx-auto w-full max-w-7xl px-6 py-24 lg:px-10">
+        <p className="type-eyebrow text-accent">Unexpected error</p>
+        <h1 className="type-display rule-accent mt-6 max-w-3xl">
+          Something went wrong
+        </h1>
+        <p className="type-lead mt-10 max-w-xl text-ink-muted">
+          We hit an unexpected error while loading this page. You can retry, or
+          return to the homepage.
+        </p>
 
-          <h1 className="text-2xl font-bold text-white mb-3">
-            Oops! Something went wrong
-          </h1>
+        {process.env.NODE_ENV === "development" && (
+          <pre className="mt-10 max-w-2xl overflow-x-auto border-l-2 border-destructive bg-surface-alt px-5 py-4 font-mono text-xs text-ink">
+            {error.message}
+            {error.digest ? `\n\nDigest: ${error.digest}` : ""}
+          </pre>
+        )}
 
-          <p className="text-gray-400 mb-6">
-            We encountered an unexpected error. Our team has been notified and is working on a fix.
-          </p>
-
-          {process.env.NODE_ENV === 'development' && (
-            <div className="mb-6 p-4 bg-red-950/20 border border-red-900/30 rounded-lg text-left">
-              <p className="text-xs text-red-400 font-mono break-all">
-                {error.message}
-              </p>
-              {error.digest && (
-                <p className="text-xs text-red-400/60 mt-2">
-                  Error ID: {error.digest}
-                </p>
-              )}
-            </div>
-          )}
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button
-              onClick={reset}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
-            >
-              <RefreshCw className="w-4 h-4 mr-2" />
-              Try Again
-            </Button>
-
-            <Button
-              onClick={() => window.location.href = '/'}
-              variant="outline"
-              className="border-gray-700 text-gray-300 hover:bg-gray-800"
-            >
-              <Home className="w-4 h-4 mr-2" />
-              Go Home
-            </Button>
-          </div>
+        <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+          <ActionButton onClick={reset} variant="solid">
+            Try again
+          </ActionButton>
+          <Action href="/" variant="outline">
+            Back to home
+          </Action>
         </div>
       </div>
     </div>

@@ -1,7 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import Link from "next/link";
+import { ActionButton } from "@/components/ui/action";
+import { SectionHeader } from "@/components/ui/section";
+
+const FIELD =
+  "w-full border border-line bg-surface px-4 py-3 text-[0.9375rem] text-ink placeholder:text-ink-subtle focus:border-accent focus:outline-none";
+
+const LABEL = "mb-2 block text-sm font-medium text-ink-strong";
 
 export function Footer() {
   const [formData, setFormData] = useState({
@@ -12,7 +19,9 @@ export function Footer() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +41,7 @@ export function Footer() {
       } else {
         setSubmitStatus("error");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -40,248 +49,234 @@ export function Footer() {
   };
 
   return (
-    <footer
-      id="contact"
-      className="bg-[#0B0F17] pt-20 pb-5 text-white border-t border-gray-800"
-    >
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Contact Form Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Ready to transform your manufacturing operations? Let's discuss how MINERVA can help.
-            </p>
-          </div>
+    <>
+      {/* ── Contact ─────────────────────────────────────────────────── */}
+      <section id="contact" className="bg-surface-alt py-20 md:py-28">
+        <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
+          <SectionHeader
+            eyebrow="Contact"
+            title="Start a conversation about your operation"
+            lead="Tell us what you run and what you are trying to improve. We will come back with whether the platform is a fit — and where it is not."
+            align="start"
+          />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
+          <div className="mt-16 grid grid-cols-1 gap-x-16 gap-y-14 lg:grid-cols-2">
+            {/* Details */}
             <div>
-              <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Email</h4>
-                    <a href="mailto:minervaenergyid@gmail.com" className="text-gray-400 hover:text-blue-400 transition">
+              <dl className="border-t border-line">
+                <div className="grid grid-cols-1 gap-1 border-b border-line py-6 sm:grid-cols-[8rem_1fr]">
+                  <dt className="type-eyebrow text-ink-subtle">Email</dt>
+                  <dd>
+                    <a
+                      href="mailto:minervaenergyid@gmail.com"
+                      className="text-ink transition-colors hover:text-accent"
+                    >
                       minervaenergyid@gmail.com
                     </a>
-                  </div>
+                  </dd>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Phone</h4>
-                    <a href="tel:+6282217257007" className="text-gray-400 hover:text-blue-400 transition">
+                <div className="grid grid-cols-1 gap-1 border-b border-line py-6 sm:grid-cols-[8rem_1fr]">
+                  <dt className="type-eyebrow text-ink-subtle">Phone</dt>
+                  <dd>
+                    <a
+                      href="tel:+6282217257007"
+                      className="text-ink transition-colors hover:text-accent"
+                    >
                       +62 822-1725-7007
                     </a>
-                  </div>
+                  </dd>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Location</h4>
-                    <p className="text-gray-400">
-                      Jl. Telekomunikasi No.1, Sukapura,<br/>  
-                      Kec. Dayeuhkolot,<br/>
-                      Kabupaten Bandung, Jawa Barat 40257,<br/>
-                      Indonesia
-                    </p>
-                  </div>
+                <div className="grid grid-cols-1 gap-1 border-b border-line py-6 sm:grid-cols-[8rem_1fr]">
+                  <dt className="type-eyebrow text-ink-subtle">Office</dt>
+                  <dd className="text-ink-muted">
+                    Jl. Telekomunikasi No.1, Sukapura
+                    <br />
+                    Dayeuhkolot, Kabupaten Bandung
+                    <br />
+                    Jawa Barat 40257, Indonesia
+                  </dd>
                 </div>
-              </div>
-
-              <div className="mt-10">
-                <h4 className="font-semibold mb-4">Why Partner with MINERVA?</h4>
-                <ul className="space-y-3 text-gray-400 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-400 mt-1">✓</span>
-                    <span>Proven track record with industry leaders</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-400 mt-1">✓</span>
-                    <span>Real-time digital twin technology</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-400 mt-1">✓</span>
-                    <span>AI-powered energy optimization</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-400 mt-1">✓</span>
-                    <span>Dedicated support and consultation</span>
-                  </li>
-                </ul>
-              </div>
+              </dl>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-[#151b29]/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Name <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#0c1220] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition text-white"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Email <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#0c1220] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition text-white"
-                      placeholder="your.email@company.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Company</label>
-                    <input
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#0c1220] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition text-white"
-                      placeholder="Your company name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Phone</label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#0c1220] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition text-white"
-                      placeholder="+62 XXX XXXX XXXX"
-                    />
-                  </div>
-                </div>
-
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Message <span className="text-red-400">*</span>
+                  <label htmlFor="name" className={LABEL}>
+                    Name
                   </label>
-                  <textarea
+                  <input
+                    id="name"
+                    className={FIELD}
                     required
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#0c1220] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition text-white resize-none"
-                    placeholder="Tell us about your project, challenges, or questions..."
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                   />
                 </div>
+                <div>
+                  <label htmlFor="company" className={LABEL}>
+                    Company
+                  </label>
+                  <input
+                    id="company"
+                    className={FIELD}
+                    value={formData.company}
+                    onChange={(e) =>
+                      setFormData({ ...formData, company: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
 
-                {submitStatus === "success" && (
-                  <div className="bg-green-500/10 border border-green-500/50 text-green-400 px-4 py-3 rounded-lg text-sm">
-                    Thank you! We'll get back to you soon.
-                  </div>
-                )}
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="email" className={LABEL}>
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    className={FIELD}
+                    required
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className={LABEL}>
+                    Phone
+                  </label>
+                  <input
+                    id="phone"
+                    className={FIELD}
+                    value={formData.phone}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
 
-                {submitStatus === "error" && (
-                  <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg text-sm">
-                    Something went wrong. Please try again.
-                  </div>
-                )}
+              <div>
+                <label htmlFor="message" className={LABEL}>
+                  What would you like to discuss?
+                </label>
+                <textarea
+                  id="message"
+                  rows={5}
+                  className={FIELD}
+                  required
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                />
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <Send className="w-5 h-5" />
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </button>
-              </form>
-            </div>
+              {submitStatus === "success" && (
+                <p className="border-l-2 border-accent bg-accent-soft px-4 py-3 text-sm text-ink">
+                  Thank you — your message has been sent. We will be in touch.
+                </p>
+              )}
+              {submitStatus === "error" && (
+                <p className="border-l-2 border-destructive bg-destructive/5 px-4 py-3 text-sm text-ink">
+                  Something went wrong. Please try again, or email us directly.
+                </p>
+              )}
+
+              <ActionButton
+                type="submit"
+                variant="accent"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending…" : "Send message"}
+              </ActionButton>
+            </form>
           </div>
         </div>
+      </section>
 
-        {/* Footer Bottom */}
-        <div className="border-t border-gray-800 pt-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Logo + Description */}
+      {/* ── Footer ──────────────────────────────────────────────────── */}
+      <footer className="bg-deep text-on-deep">
+        <div className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-10">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <img src="/logo/MINERVA logo.png" alt="Minerva" className="w-40" />
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed mt-6">
-                Real-Time Digital Twin AI Optimization for
-                Sustainable Manufacturing
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo/MINERVA logo.png"
+                alt="MINERVA"
+                className="h-10 w-auto brightness-0 invert"
+              />
+              <p className="mt-6 max-w-sm leading-relaxed text-on-deep-muted">
+                Industrial intelligence systems that connect physical assets,
+                operational data, digital twins and AI.
               </p>
             </div>
 
-            {/* Quick Links */}
+            <nav>
+              <p className="type-eyebrow text-accent-on-deep">Explore</p>
+              <ul className="mt-5 space-y-3 text-[0.9375rem]">
+                {[
+                  { href: "/#technology", label: "Technology" },
+                  { href: "/#product", label: "Platform" },
+                  { href: "/#portfolio", label: "Proof" },
+                  { href: "/#about", label: "About us" },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="text-on-deep-muted transition-colors hover:text-on-deep"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <p className="type-eyebrow text-accent-on-deep">Get in touch</p>
+              <ul className="mt-5 space-y-3 text-[0.9375rem] text-on-deep-muted">
                 <li>
-                  <a href="/#home" className="hover:text-blue-400 transition">
-                    Home
+                  <a
+                    href="mailto:minervaenergyid@gmail.com"
+                    className="transition-colors hover:text-on-deep"
+                  >
+                    minervaenergyid@gmail.com
                   </a>
                 </li>
                 <li>
-                  <a href="/#product" className="hover:text-blue-400 transition">
-                    Product
+                  <a
+                    href="tel:+6282217257007"
+                    className="transition-colors hover:text-on-deep"
+                  >
+                    +62 822-1725-7007
                   </a>
                 </li>
                 <li>
-                  <a href="/#portfolio" className="hover:text-blue-400 transition">
-                    Portfolio
-                  </a>
-                </li>
-                <li>
-                  <a href="/#about" className="hover:text-blue-400 transition">
-                    About Us
-                  </a>
+                  <Link
+                    href="/#contact"
+                    className="transition-colors hover:text-on-deep"
+                  >
+                    Request a briefing
+                  </Link>
                 </li>
               </ul>
             </div>
+          </div>
 
-            {/* Request Demo */}
-            <div>
-              <h4 className="font-semibold mb-4">Ready to Get Started?</h4>
-              <p className="text-gray-400 text-sm mb-4">
-                Schedule a demo to see MINERVA in action
-              </p>
-              <a
-                href="https://wa.me/6282217257007?text=Hi%20MINERVA%20team,%20I'd%20like%20to%20request%20a%20demo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-sm transition-colors font-medium">
-                  Request Demo
-                </button>
-              </a>
-            </div>
+          <div className="mt-16 border-t border-line-on-deep pt-8 text-sm text-on-deep-muted">
+            © {new Date().getFullYear()} MINERVA. All rights reserved.
           </div>
         </div>
-
-        {/* Copyright */}
-        <div className="text-center text-gray-400 text-xs mt-10 border-t border-gray-700 pt-6">
-          © Developed by MINERVA Team. 2025
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }

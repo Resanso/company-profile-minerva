@@ -1,61 +1,61 @@
-import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { timelineData } from "@/data/timeline";
+import { Section, SectionHeader } from "@/components/ui/section";
 
 export function TimelineSection() {
   const data = timelineData.map((entry, idx) => ({
     title: entry.year,
     content: (
-      <div key={`timeline-content-${idx}`}>
-        <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
-          {entry.title}
-        </h3>
-        <p className="mb-6 text-sm font-normal text-gray-300 md:text-base">
+      <div>
+        <h3 className="text-xl">{entry.title}</h3>
+
+        <p className="mt-3 max-w-2xl leading-relaxed text-ink-muted">
           {entry.description}
         </p>
 
-        {/* Key Items */}
-        <div className="mb-8 space-y-2">
+        <ul className="mt-6 space-y-3">
           {entry.items.map((item, index) => (
-            <div
+            <li
               key={`item-${idx}-${index}`}
-              className="flex items-start gap-3 text-xs text-gray-300 md:text-sm"
+              className="flex gap-3 text-sm leading-relaxed text-ink-muted"
             >
-              <span className="text-blue-500 mt-1 flex-shrink-0">✓</span>
+              <span aria-hidden className="mt-2 h-px w-3 shrink-0 bg-line-strong" />
               <span>{item}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Images - Grid Layout for Multiple Images */}
         {entry.images ? (
-          <div className="grid grid-cols-2 gap-3 max-h-[400px]">
-            {/* Left: Main Image (Hackathon) */}
-            <div className="rounded-lg overflow-hidden shadow-lg row-span-2 h-full">
+          <div className="mt-8 grid max-w-2xl grid-cols-2 gap-3">
+            <div className="row-span-2 overflow-hidden bg-surface-sunken">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={entry.images.main}
-                alt={`${entry.title} - Main`}
-                className="w-full h-full object-cover"
+                alt={entry.title}
+                className="h-full w-full object-cover"
               />
             </div>
-            {/* Right: Grid Images (Pilot Photos) */}
-            {entry.images.grid && entry.images.grid.map((img, imgIdx) => (
-              <div key={imgIdx} className="rounded-lg overflow-hidden shadow-lg h-[196px]">
+            {entry.images.grid?.map((img, imgIdx) => (
+              <div
+                key={imgIdx}
+                className="aspect-[4/3] overflow-hidden bg-surface-sunken"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={img}
-                  alt={`${entry.title} - ${imgIdx + 1}`}
-                  className="w-full h-full object-cover"
+                  alt={`${entry.title} — ${imgIdx + 1}`}
+                  className="h-full w-full object-cover"
                 />
               </div>
             ))}
           </div>
         ) : entry.image ? (
-          /* Single Image Fallback */
-          <div className="rounded-lg overflow-hidden shadow-lg max-h-[400px]">
+          <div className="mt-8 max-w-2xl overflow-hidden bg-surface-sunken">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={entry.image}
               alt={entry.title}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
         ) : null}
@@ -64,8 +64,17 @@ export function TimelineSection() {
   }));
 
   return (
-    <div className="relative w-full overflow-clip">
-      <Timeline data={data} />
-    </div>
+    <Section id="timeline" tone="light">
+      <SectionHeader
+        eyebrow="Roadmap"
+        title="From pilot to deployment"
+        lead="Where the platform is today, and the sequence we are building toward."
+        align="start"
+      />
+
+      <div className="mt-16">
+        <Timeline data={data} />
+      </div>
+    </Section>
   );
 }
