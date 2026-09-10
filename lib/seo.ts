@@ -1,23 +1,22 @@
 import { Metadata } from 'next';
 
 export const siteConfig = {
-  name: 'MINERVA',
-  title: 'MINERVA - AI-Powered Digital Twin for Sustainable Manufacturing',
-  description: 'MINERVA delivers real-time Digital Twin AI Optimization for industrial manufacturing. Winner of 2025 Hackathon powered by Ericsson & Qualcomm. Transform your operations with energy efficiency, predictive analytics, and smart manufacturing solutions.',
+  name: 'Future Tech',
+  title: 'Future Tech — Industrial Intelligence for the Physical World',
+  description: 'Future Tech builds industrial intelligence systems that connect physical assets, industrial data, digital twins, and AI. MINERVA, its flagship platform, is the winner of the 2025 Hackathon powered by Ericsson & Qualcomm.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://minerva-energy.com',
-  author: 'MINERVA Team',
+  author: 'Future Tech',
   keywords: [
+    'Industrial Intelligence',
     'Digital Twin',
-    'AI Manufacturing',
-    'Energy Optimization',
     'Industrial AI',
-    'Sustainable Manufacturing',
+    'MINERVA',
+    'Deep Tech',
     'Smart Factory',
     'Predictive Maintenance',
     'Industry 4.0',
-    '5G Manufacturing',
     'IoT Industrial',
-    'Energy Management',
+    'Energy Intelligence',
     'Manufacturing AI',
   ],
   social: {
@@ -100,7 +99,7 @@ export function getOrganizationSchema() {
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo/MINERVA%20logo.png`,
+    logo: `${siteConfig.url}/brand/future-tech-logo-reference.png`,
     email: 'minervaenergyid@gmail.com',
     telephone: '+62-822-1725-7007',
     address: {

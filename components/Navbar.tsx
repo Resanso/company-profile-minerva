@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Action } from "@/components/ui/action";
+import { FutureTechMark } from "@/components/brand/FutureTechMark";
 
 const NAV_LINKS = [
   { href: "/#technology", label: "Technology" },
-  { href: "/#product", label: "Platform" },
+  { href: "/#product", label: "MINERVA" },
   { href: "/#portfolio", label: "Proof" },
-  { href: "/#about", label: "About us" },
+  { href: "/#industries", label: "Industries" },
+  { href: "/#about", label: "Vision" },
 ];
 
 export function Navbar() {
@@ -29,7 +31,7 @@ export function Navbar() {
       <div className="hidden bg-deep text-on-deep md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-end gap-8 px-6 py-2.5 text-[0.8125rem] lg:px-10">
           <span className="text-on-deep-muted">
-            Winner — Ericsson &amp; Qualcomm Hackathon 2025
+            Sustainable Future. Deep Tech.
           </span>
           <a
             href="mailto:minervaenergyid@gmail.com"
@@ -43,13 +45,8 @@ export function Navbar() {
       {/* Masthead */}
       <div className="border-b border-line bg-surface">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-          <Link href="/" className="flex items-center" aria-label="MINERVA — home">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo/MINERVA logo.png"
-              alt="MINERVA"
-              className="h-9 w-auto"
-            />
+          <Link href="/" className="flex items-center" aria-label="Future Tech — home">
+            <FutureTechMark />
           </Link>
 
           <nav className="hidden items-center gap-9 lg:flex">

@@ -1,7 +1,12 @@
 import { TimelineSection } from "@/components/timeline-section";
 import { TechnologySection } from "@/components/TechnologySection";
-import { ProductCard } from "@/components/ProductCard";
-import { products, impactMetrics } from "@/data/products";
+import { WhoWeAreSection } from "@/components/WhoWeAreSection";
+import { ChallengeSection } from "@/components/ChallengeSection";
+import { MinervaFlagshipSection } from "@/components/MinervaFlagshipSection";
+import { ImplementationSection } from "@/components/ImplementationSection";
+import { IndustriesSection } from "@/components/IndustriesSection";
+import { WhyFutureTechSection } from "@/components/WhyFutureTechSection";
+import { impactMetrics } from "@/data/products";
 import { visionMission } from "@/data/about";
 import { Navbar } from "@/components/Navbar";
 import { SectionNav } from "@/components/SectionNav";
@@ -10,12 +15,21 @@ import { TeamSection } from "@/components/TeamSection";
 import { Action } from "@/components/ui/action";
 import { Section, SectionHeader, Stat } from "@/components/ui/section";
 
+/**
+ * Page order follows the company profile brief's 13-page structure:
+ * Cover → Who We Are (02) → The Industrial Challenge (03) →
+ * Technology Approach + Foundation (04–05) → MINERVA (06) →
+ * Proof of Technology (07) → Industrial Implementation (08) →
+ * Applications (09) → Industries & Use Cases (10) → Why Future Tech (12) →
+ * Vision (13). Roadmap and Team sit outside the brief's page list but are
+ * kept as supporting material before the footer.
+ */
 export default function Page() {
   return (
     <div className="bg-surface">
       <Navbar />
 
-      {/* ── Hero ────────────────────────────────────────────────────── */}
+      {/* ── Cover (page 01) ────────────────────────────────────────── */}
       <section id="home" className="relative isolate overflow-hidden bg-deep">
         <video
           autoPlay
@@ -53,89 +67,21 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Announcement strip */}
-      <div className="border-b border-line bg-surface-alt">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-6 py-4 text-center text-[0.9375rem] lg:px-10">
-          <span className="text-ink-muted">
-            MINERVA — winner, Ericsson &amp; Qualcomm Hackathon 2025.
-          </span>
-          <a
-            href="/portofolio"
-            className="font-semibold text-accent underline-offset-4 hover:underline"
-          >
-            Read the story
-          </a>
-        </div>
-      </div>
-
       <SectionNav />
 
-      {/* ── Technology (profile pages 04–05) ────────────────────────── */}
+      {/* ── Who We Are (page 02) ───────────────────────────────────── */}
+      <WhoWeAreSection />
+
+      {/* ── The Industrial Challenge (page 03) ─────────────────────── */}
+      <ChallengeSection />
+
+      {/* ── Technology Approach + Foundation (pages 04–05) ─────────── */}
       <TechnologySection />
 
-      {/* ── Platform ────────────────────────────────────────────────── */}
-      <Section id="product" tone="alt">
-        <SectionHeader
-          eyebrow="Platform"
-          title="MINERVA — the industrial intelligence platform"
-          lead="MINERVA connects industrial data, digital twins, analytics and AI into a single intelligence layer for industrial operations."
-        />
+      {/* ── MINERVA — flagship product (page 06) ───────────────────── */}
+      <MinervaFlagshipSection />
 
-        <div className="mt-16 hidden gap-px bg-line md:grid md:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
-
-        {/* Mobile: horizontal snap rail */}
-        <div className="mt-12 md:hidden">
-          <div className="scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
-            {products.map((product) => (
-              <div key={product.id} className="w-[85vw] shrink-0 snap-center">
-                <ProductCard {...product} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* ── Applications / impact ───────────────────────────────────── */}
-      <Section id="applications" tone="deep">
-        <SectionHeader
-          tone="deep"
-          eyebrow="Potential impact"
-          title="Turning industrial data into intelligence"
-          lead="Indicative operational outcomes modelled on the platform's deployment in Indonesian heavy-industry manufacturing."
-        />
-
-        {/*
-          NOTE: these figures are carried over from the previous site and have
-          no stated source or project status attached to them. Until each one
-          is tied to a named site and a deployment stage, they are presented
-          here as indicative — never as validated results.
-        */}
-        <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-5">
-          {impactMetrics.map((metric) => (
-            <Stat
-              key={metric.title}
-              tone="deep"
-              value={metric.value}
-              caption={metric.description}
-              description={
-                metric.type === "reduce" ? "Reduction" : "Improvement"
-              }
-            />
-          ))}
-        </div>
-
-        <p className="mt-16 max-w-3xl leading-relaxed text-on-deep-muted">
-          Transform operations from reactive to proactive: gain operational
-          visibility, reduce energy waste, and shorten the path from signal to
-          decision.
-        </p>
-      </Section>
-
-      {/* ── Proof ───────────────────────────────────────────────────── */}
+      {/* ── Proof of Technology (page 07) ──────────────────────────── */}
       <Section id="portfolio" tone="light">
         <SectionHeader
           eyebrow="Proof of technology"
@@ -186,15 +132,60 @@ export default function Page() {
         </div>
       </Section>
 
-      {/* ── Roadmap ─────────────────────────────────────────────────── */}
+      {/* ── Industrial Implementation (page 08) ────────────────────── */}
+      <ImplementationSection />
+
+      {/* ── Applications / impact (page 09) ────────────────────────── */}
+      <Section id="applications" tone="deep">
+        <SectionHeader
+          tone="deep"
+          eyebrow="Potential impact"
+          title="Turning industrial data into intelligence"
+          lead="Indicative operational outcomes modelled on the platform's deployment in Indonesian heavy-industry manufacturing."
+        />
+
+        {/*
+          NOTE: these figures are carried over from the previous site and have
+          no stated source or project status attached to them. Until each one
+          is tied to a named site and a deployment stage, they are presented
+          here as indicative — never as validated results.
+        */}
+        <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-5">
+          {impactMetrics.map((metric) => (
+            <Stat
+              key={metric.title}
+              tone="deep"
+              value={metric.value}
+              caption={metric.description}
+              description={
+                metric.type === "reduce" ? "Reduction" : "Improvement"
+              }
+            />
+          ))}
+        </div>
+
+        <p className="mt-16 max-w-3xl leading-relaxed text-on-deep-muted">
+          Transform operations from reactive to proactive: gain operational
+          visibility, reduce energy waste, and shorten the path from signal to
+          decision.
+        </p>
+      </Section>
+
+      {/* ── Industries & Use Cases (page 10) ───────────────────────── */}
+      <IndustriesSection />
+
+      {/* ── Roadmap (supporting material) ──────────────────────────── */}
       <TimelineSection />
 
-      {/* ── About ───────────────────────────────────────────────────── */}
+      {/* ── Why Future Tech (page 12) ──────────────────────────────── */}
+      <WhyFutureTechSection />
+
+      {/* ── Vision (page 13) ────────────────────────────────────────── */}
       <Section id="about" tone="deep">
         <SectionHeader
           tone="deep"
           eyebrow="About us"
-          title="Building intelligence for industrial operations"
+          title="From industrial data to industrial intelligence"
           align="start"
         />
 

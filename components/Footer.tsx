@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { ActionButton } from "@/components/ui/action";
 import { SectionHeader } from "@/components/ui/section";
+import { FutureTechMark } from "@/components/brand/FutureTechMark";
+import { MinervaMark } from "@/components/brand/MinervaMark";
 
 const FIELD =
   "w-full border border-line bg-surface px-4 py-3 text-[0.9375rem] text-ink placeholder:text-ink-subtle focus:border-accent focus:outline-none";
@@ -204,35 +206,44 @@ export function Footer() {
       </section>
 
       {/* ── Footer ──────────────────────────────────────────────────── */}
-      <footer className="bg-deep text-on-deep">
+      <footer className="bg-surface text-ink">
         <div className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-10">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
             <div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/logo/MINERVA logo.png"
-                alt="MINERVA"
-                className="h-10 w-auto brightness-0 invert"
-              />
-              <p className="mt-6 max-w-sm leading-relaxed text-on-deep-muted">
-                Industrial intelligence systems that connect physical assets,
-                operational data, digital twins and AI.
+              <FutureTechMark tone="dark" showTagline />
+              <p className="mt-6 max-w-sm leading-relaxed text-ink-muted">
+                Future Tech builds industrial intelligence systems that
+                connect physical assets, operational data, digital twins and
+                AI.
               </p>
+
+              {/* MINERVA stays visually distinct even here — it is the
+                  product, not the company signing this footer. */}
+              <Link
+                href="/#product"
+                className="mt-8 inline-flex items-center gap-3 border border-line px-4 py-3 transition-colors hover:border-minerva-red"
+              >
+                <span className="type-eyebrow text-ink-muted">
+                  Flagship platform
+                </span>
+                <MinervaMark tone="dark" size="sm" />
+              </Link>
             </div>
 
             <nav>
-              <p className="type-eyebrow text-accent-on-deep">Explore</p>
+              <p className="type-eyebrow text-accent">Explore</p>
               <ul className="mt-5 space-y-3 text-[0.9375rem]">
                 {[
                   { href: "/#technology", label: "Technology" },
-                  { href: "/#product", label: "Platform" },
+                  { href: "/#product", label: "MINERVA" },
                   { href: "/#portfolio", label: "Proof" },
-                  { href: "/#about", label: "About us" },
+                  { href: "/#industries", label: "Industries" },
+                  { href: "/#about", label: "Vision" },
                 ].map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-on-deep-muted transition-colors hover:text-on-deep"
+                      className="text-ink-muted transition-colors hover:text-ink-strong"
                     >
                       {link.label}
                     </a>
@@ -242,12 +253,12 @@ export function Footer() {
             </nav>
 
             <div>
-              <p className="type-eyebrow text-accent-on-deep">Get in touch</p>
-              <ul className="mt-5 space-y-3 text-[0.9375rem] text-on-deep-muted">
+              <p className="type-eyebrow text-accent">Get in touch</p>
+              <ul className="mt-5 space-y-3 text-[0.9375rem] text-ink-muted">
                 <li>
                   <a
                     href="mailto:minervaenergyid@gmail.com"
-                    className="transition-colors hover:text-on-deep"
+                    className="transition-colors hover:text-ink-strong"
                   >
                     minervaenergyid@gmail.com
                   </a>
@@ -255,7 +266,7 @@ export function Footer() {
                 <li>
                   <a
                     href="tel:+6282217257007"
-                    className="transition-colors hover:text-on-deep"
+                    className="transition-colors hover:text-ink-strong"
                   >
                     +62 822-1725-7007
                   </a>
@@ -263,7 +274,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/#contact"
-                    className="transition-colors hover:text-on-deep"
+                    className="transition-colors hover:text-ink-strong"
                   >
                     Request a briefing
                   </Link>
@@ -272,8 +283,8 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="mt-16 border-t border-line-on-deep pt-8 text-sm text-on-deep-muted">
-            © {new Date().getFullYear()} MINERVA. All rights reserved.
+          <div className="mt-16 border-t border-line pt-8 text-sm text-ink-muted">
+            © {new Date().getFullYear()} Future Tech. All rights reserved.
           </div>
         </div>
       </footer>

@@ -46,8 +46,30 @@
   --color-line-on-deep: #2b3d5c;
 
   /* ---- Type ------------------------------------------------------------ */
-  --font-sans: var(--font-barlow), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-orbitron: "Arial Narrow", "Avenir Next Condensed", "Helvetica Neue", Arial, sans-serif;
+
+  /* ---- MINERVA product brand --------------------------------------------
+     Taken directly from the MINERVA brandkit. Scoped to the flagship-product
+     zone and the MinervaMark component — never the company shell, which
+     stays on the Future Tech blue accent above. */
+  --color-minerva-red: #d32f2f;
+  --color-minerva-red-dark: #b71c1c;
+  --color-minerva-green: #2e7d32;
+  --color-minerva-green-dark: #1b5e20;
+  --color-minerva-navy: #0f1720;
+  --color-minerva-slate-1: #334155;
+  --color-minerva-slate-2: #64748b;
+  --color-minerva-slate-3: #cbd5e1;
+  --color-minerva-slate-4: #f1f5f9;
+
+  /* ---- Future Tech company brand ---------------------------------------
+     The gradient from the Future Tech "FT" mark. Close kin to the site's
+     existing accent blue, used only on the mark itself and small accents —
+     the shell keeps its flat accent so the two brands read as one family. */
+  --color-futuretech-from: #1b4dd6;
+  --color-futuretech-to: #2fd1c5;
 
   /* ---- Rhythm ---------------------------------------------------------- */
   --spacing-band: 5rem;
@@ -214,6 +236,13 @@
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* MINERVA product brand — Orbitron, wide tracking, uppercase. Scope this
+     to the flagship-product zone only; it is not the site's default voice. */
+  .font-minerva {
+    font-family: var(--font-orbitron);
+    letter-spacing: 0.02em;
   }
 }
 

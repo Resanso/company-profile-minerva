@@ -29,13 +29,7 @@ const teamMembers: TeamMember[] = [
     description:
       "Owns the platform architecture and the industrial data layer.",
   },
-  {
-    name: "Ahmad Rafiansyah",
-    role: "Lead Designer",
-    image: "/team/Rafi.jpeg",
-    description:
-      "Designs the operator-facing interfaces for digital twin and analytics.",
-  },
+  // Ahmad Rafiansyah (Lead Designer) intentionally hidden from this list.
 ];
 
 export function TeamSection() {
@@ -47,7 +41,7 @@ export function TeamSection() {
         align="start"
       />
 
-      <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {teamMembers.map((member) => (
           <div key={member.name}>
             <div className="aspect-[4/5] w-full overflow-hidden bg-surface-sunken">

@@ -11,12 +11,14 @@ import { useEffect, useState } from "react";
  */
 
 const SECTIONS = [
+  { id: "who-we-are", label: "Who we are" },
   { id: "technology", label: "Technology" },
-  { id: "product", label: "Platform" },
-  { id: "applications", label: "Applications" },
+  { id: "product", label: "MINERVA" },
   { id: "portfolio", label: "Proof" },
-  { id: "timeline", label: "Roadmap" },
-  { id: "about", label: "About us" },
+  { id: "implementation", label: "Implementation" },
+  { id: "industries", label: "Industries" },
+  { id: "why-us", label: "Why us" },
+  { id: "about", label: "Vision" },
   { id: "contact", label: "Contact" },
 ];
 
