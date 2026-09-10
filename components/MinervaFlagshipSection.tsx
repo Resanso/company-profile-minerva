@@ -20,8 +20,23 @@ export function MinervaFlagshipSection() {
   } as CSSProperties;
 
   return (
-    <section id="product" className="scroll-mt-32 bg-minerva-navy py-20 md:py-28">
-      <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
+    <section
+      id="product"
+      className="relative isolate scroll-mt-32 overflow-hidden bg-deep py-20 md:py-28"
+    >
+      <video
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      >
+        <source src="/videos/video-dashboard.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 -z-10 bg-deep/75" aria-hidden="true" />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
         <p className="type-eyebrow text-minerva-slate-3">Flagship product</p>
 
         <div className="mt-6 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">

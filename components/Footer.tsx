@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ActionButton } from "@/components/ui/action";
 import { SectionHeader } from "@/components/ui/section";
 import { FutureTechMark } from "@/components/brand/FutureTechMark";
-import { MinervaMark } from "@/components/brand/MinervaMark";
 
 const FIELD =
   "w-full border border-line bg-surface px-4 py-3 text-[0.9375rem] text-ink placeholder:text-ink-subtle focus:border-accent focus:outline-none";
@@ -217,17 +216,6 @@ export function Footer() {
                 AI.
               </p>
 
-              {/* MINERVA stays visually distinct even here — it is the
-                  product, not the company signing this footer. */}
-              <Link
-                href="/#product"
-                className="mt-8 inline-flex items-center gap-3 border border-line px-4 py-3 transition-colors hover:border-minerva-red"
-              >
-                <span className="type-eyebrow text-ink-muted">
-                  Flagship platform
-                </span>
-                <MinervaMark tone="dark" size="sm" />
-              </Link>
             </div>
 
             <nav>

@@ -21,7 +21,7 @@ export function MinervaMark({
   return (
     <span
       className={cn(
-        "relative inline-flex overflow-hidden",
+        "relative inline-flex overflow-hidden bg-white",
         sizes.wrapper,
         className,
       )}
