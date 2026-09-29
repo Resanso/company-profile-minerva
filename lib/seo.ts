@@ -78,10 +78,11 @@ export function generateMetadata({
     // Additional meta tags
     icons: {
       icon: [
-        { url: '/icon.svg', type: 'image/svg+xml' },
+        { url: '/logo/future-tech.png' },
         { url: '/icon.png', sizes: '512x512', type: 'image/png' },
       ],
-      apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+      apple: [{ url: '/logo/future-tech.png' }],
+      shortcut: [{ url: '/logo/future-tech.png' }],
     },
 
     alternates: {
