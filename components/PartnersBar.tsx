@@ -15,7 +15,7 @@ export function PartnersBar() {
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className={`${partner.heightClass} w-auto`}
+                className={`${partner.heightClass} w-auto grayscale`}
               />
             </li>
           ))}
