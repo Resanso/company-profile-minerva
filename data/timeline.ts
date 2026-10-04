@@ -9,6 +9,8 @@ export interface TimelineEntry {
     grid?: string[];
   };
   highlighted?: boolean;
+  /** Optional detail page; makes the entry clickable. */
+  href?: string;
 }
 
 export const timelineData: TimelineEntry[] = [
@@ -40,6 +42,7 @@ export const timelineData: TimelineEntry[] = [
       "From site assessment to operational validation and handover in ~1 month",
     ],
     highlighted: true,
+    href: "/integratex",
   },
   {
     year: "2026",

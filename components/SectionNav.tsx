@@ -17,7 +17,6 @@ const SECTIONS = [
   { id: "portfolio", label: "Proof" },
   { id: "implementation", label: "Implementation" },
   { id: "industries", label: "Industries" },
-  { id: "use-case-2", label: "IntegrateX" },
   { id: "why-us", label: "Why us" },
   { id: "about", label: "Vision" },
   { id: "contact", label: "Contact" },

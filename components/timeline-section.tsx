@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Timeline } from "@/components/ui/timeline";
 import { timelineData } from "@/data/timeline";
 import { Section, SectionHeader } from "@/components/ui/section";
@@ -7,7 +8,18 @@ export function TimelineSection() {
     title: entry.year,
     content: (
       <div>
-        <h3 className="text-xl">{entry.title}</h3>
+        <h3 className="text-xl">
+          {entry.href ? (
+            <Link
+              href={entry.href}
+              className="transition-colors hover:text-accent"
+            >
+              {entry.title}
+            </Link>
+          ) : (
+            entry.title
+          )}
+        </h3>
 
         <p className="mt-3 max-w-2xl leading-relaxed text-ink-muted">
           {entry.description}
@@ -58,6 +70,16 @@ export function TimelineSection() {
               className="h-full w-full object-cover"
             />
           </div>
+        ) : null}
+
+        {entry.href ? (
+          <Link
+            href={entry.href}
+            className="type-eyebrow mt-6 inline-flex items-center gap-2 text-accent transition-colors hover:text-ink-strong"
+          >
+            View project details
+            <span aria-hidden>→</span>
+          </Link>
         ) : null}
       </div>
     ),

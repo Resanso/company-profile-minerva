@@ -85,13 +85,8 @@ export const industries: Industry[] = [
   {
     index: "03",
     name: "Aviation & MRO",
-    problem: "Asset history and maintenance records are scattered across systems; forklifts and ground equipment lack real-time positioning, causing safety hazards.",
-    capability: [
-      "Asset Tracking",
-      "Operational Intelligence",
-      "5G-Powered Geofencing",
-      "AI-assisted Operations",
-    ],
+    problem: "Asset history and maintenance records are scattered across systems.",
+    capability: ["Asset Tracking", "Operational Intelligence", "AI-assisted Operations"],
   },
   {
     index: "04",
@@ -119,17 +114,6 @@ export const industries: Industry[] = [
       "Operational Visibility",
       "Equipment Intelligence",
       "AI-assisted Operations",
-    ],
-  },
-  {
-    index: "07",
-    name: "Maritime & Shipping",
-    problem: "Fleet-wide operational visibility is limited by disconnected onboard systems and shore-side data.",
-    capability: [
-      "Fleet Intelligence",
-      "Asset Monitoring",
-      "Operational Visibility",
-      "Predictive Analytics",
     ],
   },
 ];

@@ -7,7 +7,6 @@ import { ImplementationSection } from "@/components/ImplementationSection";
 import { IndustriesSection } from "@/components/IndustriesSection";
 import { WhyFutureTechSection } from "@/components/WhyFutureTechSection";
 import { PartnersBar } from "@/components/PartnersBar";
-import { UseCase2Section } from "@/components/UseCase2Section";
 import { impactMetrics } from "@/data/products";
 import { visionMission } from "@/data/about";
 import { Navbar } from "@/components/Navbar";
@@ -178,9 +177,6 @@ export default function Page() {
 
       {/* ── Industries & Use Cases (page 10) ───────────────────────── */}
       <IndustriesSection />
-
-      {/* ── Use Case 02 — Project IntegrateX ───────────────────────── */}
-      <UseCase2Section />
 
       {/* ── Roadmap (supporting material) ──────────────────────────── */}
       <TimelineSection />
