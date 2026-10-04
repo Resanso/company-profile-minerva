@@ -29,6 +29,19 @@ export const timelineData: TimelineEntry[] = [
     highlighted: true,
   },
   {
+    year: "Oct 2026",
+    title: "Project IntegrateX — Ericsson × Komdigi",
+    description:
+      "MINERVA joins Project IntegrateX under the Komdigi × Garuda Spark program, running 5G-powered industrial intelligence PoCs on Ericsson Private 5G with Impactto.",
+    items: [
+      "PoC at GMF AeroAsia aviation MRO facility, enabled by Ericsson Private 5G",
+      "Use Case 01 — Smart tracking for engine stands & APU stands (~10 assets)",
+      "Use Case 02 — Forklift safety monitoring with AI camera & geofencing",
+      "From site assessment to operational validation and handover in ~1 month",
+    ],
+    highlighted: true,
+  },
+  {
     year: "2026",
     title: "Platform Readiness & Partnerships",
     description:

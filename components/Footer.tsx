@@ -269,10 +269,33 @@ export function Footer() {
                 </li>
               </ul>
             </div>
+
+            <div>
+              <p className="type-eyebrow text-accent">Company</p>
+              <address className="mt-5 not-italic text-[0.9375rem] leading-relaxed text-ink-muted">
+                <span className="font-medium text-ink-strong">
+                  PT TEKNOLOGI INDUSTRI FUTURISTIK
+                </span>
+                <br />
+                Perseroan Perorangan
+                <br />
+                Tangerang, Indonesia
+                <br />
+                NIB: 1000000011214730
+                <br />
+                <a
+                  href="mailto:minervaenergyid@gmail.com"
+                  className="transition-colors hover:text-ink-strong"
+                >
+                  minervaenergyid@gmail.com
+                </a>
+              </address>
+            </div>
           </div>
 
           <div className="mt-16 border-t border-line pt-8 text-sm text-ink-muted">
-            © {new Date().getFullYear()} Future Tech. All rights reserved.
+            © {new Date().getFullYear()} PT Teknologi Industri Futuristik
+            (Future Tech). All rights reserved.
           </div>
         </div>
       </footer>
